@@ -122,6 +122,13 @@ form.addEventListener("submit", async function(e) {
     }
 
   } catch (error) {
+    // Hide only the form fields, not the whole form
+    Array.from(form.elements).forEach(element => {
+      if (element !== successComponent && element !== failComponent) {
+        element.style.display = "none";
+      }
+    });
+
     failComponent.style.display = "block";
   }
 
